@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista Cărți</title>
+</head>
+<body>
+<h1>Lista Cărți</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Titlu</th>
+        <th>Autor</th>
+        <th>Editura</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="carte : ${carti}">
+        <td th:text="${carte.id}"></td>
+        <td th:text="${carte.titlu}"></td>
+        <td th:text="${carte.autor.nume}"></td>
+        <td th:text="${carte.editura.nume}"></td>
+    </tr>
+    </tbody>
+</table>
+<div>
+        <span th:if="${carti.hasPrevious()}">
+            <a th:href="@{/carti(page=${carti.number-1},size=${carti.size})}">Previous</a>
+        </span>
+    <span th:if="${carti.hasNext()}">
+            <a th:href="@{/carti(page=${carti.number+1},size=${carti.size})}">Next</a>
+        </span>
+</div>
+<a href="/carti/adauga">Adaugă Carte</a>
+</body>
+</html>
