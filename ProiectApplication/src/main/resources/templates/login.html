@@ -2,18 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Login</title>
+    <script>
+        function validateForm() {
+            var username = document.forms["loginForm"]["username"].value;
+            var password = document.forms["loginForm"]["password"].value;
+            if (username == "" || password == "") {
+                alert("Both username and password must be filled out");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
 <h1>Login</h1>
-<form th:action="@{/login}" method="post">
+<form name="loginForm" th:action="@{/login}" method="post" onsubmit="return validateForm()">
     <div>
-        <label>User Name: <input type="text" name="username"/></label>
+        <label>User Name: <input type="text" name="username" required/></label>
     </div>
     <div>
-        <label>Password: <input type="password" name="password"/></label>
+        <label>Password: <input type="password" name="password" required/></label>
     </div>
     <div>
         <input type="submit" value="Sign In"/>
+    </div>
+    <div th:if="${param.error}">
+        <p style="color:red;">Invalid username or password</p>
+    </div>
+    <div th:if="${error}">
+        <p style="color:red;" th:text="${error}"></p>
     </div>
 </form>
 </body>

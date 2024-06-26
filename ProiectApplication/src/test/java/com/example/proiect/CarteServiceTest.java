@@ -23,5 +23,5 @@ public class CarteServiceTest {
         assertEquals("Test Carte", savedCarte.getTitlu());
     }
 
-    // Alte teste
+
 }

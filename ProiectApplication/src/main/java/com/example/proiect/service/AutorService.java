@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AutorService {
 
@@ -21,5 +23,7 @@ public class AutorService {
         return autorRepository.findById(id).orElseThrow(() -> new RuntimeException("Autor nu a fost găsit"));
     }
 
-    // Alte metode pentru operații CRUD
+    public List<Autor> gasesteAutoriDupaNume(String nume) {
+        return autorRepository.findByNume(nume);
+}
 }
