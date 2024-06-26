@@ -27,5 +27,4 @@ public class Autor {
     @OneToMany(mappedBy = "autor")
     private Set<Carte> carti;
 
-    // Puteți adăuga și alte câmpuri relevante, cum ar fi naționalitate, biografie, etc.
 }

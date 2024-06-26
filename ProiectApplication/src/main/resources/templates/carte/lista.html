@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Lista Cărți</title>
 </head>
 <body>
-<h1>Lista Cărți</h1>
+<h1>Lista Carti</h1>
 <table>
     <thead>
     <tr>
@@ -12,7 +12,7 @@
         <th>Titlu</th>
         <th>Autor</th>
         <th>Editura</th>
-        <th>Acțiuni</th>
+        <th>Actiuni</th>
     </tr>
     </thead>
     <tbody>
@@ -31,7 +31,10 @@
 </table>
 <div>
         <span th:if="${carti.hasPrevious()}">
-            <a th:href="@{/carti(page=${carti.number-1},size=${carti.size})}">Anterior</a>
+                 <a th:href="@{/carti(page=${#numbers.sequence(carti.number-1)[0]},size=${carti.size})}"
+                    th:if="${carti.number > 0}">
+       Anterior
+    </a>
         </span>
     <span th:if="${carti.hasNext()}">
             <a th:href="@{/carti(page=${carti.number+1},size=${carti.size})}">Următor</a>
