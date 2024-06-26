@@ -53,14 +53,5 @@ public class SecurityConfig {
 
         return new InMemoryUserDetailsManager(user);
     }
-    @Bean
-    @Profile("test")
-    public SecurityFilterChain testSecurityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests()
-                .anyRequest().permitAll()
-                .and()
-                .csrf().disable();
-        return http.build();
-    }
+
 }
